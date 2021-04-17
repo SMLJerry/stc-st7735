@@ -80,7 +80,7 @@ void LCD_Reset() { // 重置屏幕
     delay_ms(100);
 }
 
-void LCD_init() {// 初始化LCD, 必须调用
+void LCD_Init() {// 初始化LCD, 必须调用
 	LCD_Reset();//Reset before LCD Init.
     LCD_WriteIndex(0x11);//Sleep exit
     delay_ms (120);
@@ -215,7 +215,86 @@ void displaySingleColour(int color) { // 单色填充屏幕
 	for (i=0;i<128;i++)
 		for (j=0;j<128;j++)
 			LCD_WriteData_16Bit(color);
+} 
+void LCD_Fill(unsigned int startX,unsigned int startY,unsigned int endX,unsigned int endY,unsigned int color) { // 填充指定区域
+	unsigned int i,j; 
+	LCD_SetRegion(startX,startY,endX-1,endY-1);//设置显示范围
+	for(i=startY;i<endY;i++)
+	{													   	 	
+		for(j=startX;j<endX;j++)
+		{
+			LCD_WriteData_16Bit(color);
+		}
+	} 					  	    
 }
+void LCD_DrawPoint(unsigned int x,unsigned int y, unsigned int color) {
+	LCD_SetRegion(x,y,x,y);//设置光标位置 
+	LCD_WriteData_16Bit(color);
+} 
+	
+void LCD_DrawLine(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2, unsigned int color) { // 画一条线
+	unsigned int t; 
+	int xerr=0,yerr=0,delta_x,delta_y,distance;
+	int incx,incy,uRow,uCol;
+	delta_x=x2-x1; //计算坐标增量 
+	delta_y=y2-y1;
+	uRow=x1;//画线起点坐标
+	uCol=y1;
+	if(delta_x>0)incx=1; //设置单步方向 
+	else if (delta_x==0)incx=0;//垂直线 
+	else {incx=-1;delta_x=-delta_x;}
+	if(delta_y>0)incy=1;
+	else if (delta_y==0)incy=0;//水平线 
+	else {incy=-1;delta_y=-delta_x;}
+	if(delta_x>delta_y)distance=delta_x; //选取基本增量坐标轴 
+	else distance=delta_y;
+	for(t=0;t<distance+1;t++)
+	{
+		LCD_DrawPoint(uRow,uCol,color);//画点
+		xerr+=delta_x;
+		yerr+=delta_y;
+		if(xerr>distance)
+		{
+			xerr-=distance;
+			uRow+=incx;
+		}
+		if(yerr>distance)
+		{
+			yerr-=distance;
+			uCol+=incy;
+		}
+	}
+}
+
+void LCD_DrawRectangle(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2,unsigned int color) { // 画矩形
+	LCD_DrawLine(x1,y1,x2,y1,color);
+	LCD_DrawLine(x1,y1,x1,y2,color);
+	LCD_DrawLine(x1,y2,x2,y2,color);
+	LCD_DrawLine(x2,y1,x2,y2,color);
+}
+
+void LCD_DrawCircle(unsigned int x0,unsigned int y0,unsigned int r,unsigned int color) { // 画圆
+	int a,b;
+	a=0;b=r;	  
+	while(a<=b)
+	{
+		LCD_DrawPoint(x0-b,y0-a,color);             //3           
+		LCD_DrawPoint(x0+b,y0-a,color);             //0           
+		LCD_DrawPoint(x0-a,y0+b,color);             //1                
+		LCD_DrawPoint(x0-a,y0-b,color);             //2             
+		LCD_DrawPoint(x0+b,y0+a,color);             //4               
+		LCD_DrawPoint(x0+a,y0-b,color);             //5
+		LCD_DrawPoint(x0+a,y0+b,color);             //6 
+		LCD_DrawPoint(x0-b,y0+a,color);             //7
+		a++;
+		if((a*a+b*b)>(r*r))//判断要画的点是否过远
+		{
+			b--;
+		}
+	}
+}
+
+
 
 unsigned char code Zk_ASCII8x16[]=
 {

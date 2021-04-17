@@ -25,19 +25,30 @@ Project File Date:  04/17/2021
 Rebuild target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
+main.c(19): warning C206: 'LCD_Init': missing function-prototype
 compiling lcdDriver.c...
 compiling RGBConvert.c...
 linking...
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
     NAME:    _DISPLAY_ASCII8X16/LCDDRIVER
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _LCD_FILL/LCDDRIVER
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _LCD_DRAWRECTANGLE/LCDDRIVER
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _LCD_DRAWCIRCLE/LCDDRIVER
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
     NAME:    _RGB565TORGB888/RGBCONVERT
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
     NAME:    _RGBTORGB565/RGBCONVERT
-Program Size: data=9.0 xdata=68 const=45057 code=1792
+*** WARNING L25: DATA TYPES DIFFERENT
+    SYMBOL:  LCD_Init
+    MODULE:  .\Objects\main.obj (MAIN)
+   DEFINED:  .\Objects\lcdDriver.obj (LCDDRIVER)
+Program Size: data=9.0 xdata=138 const=45057 code=3010
 creating hex file from ".\Objects\screen"...
-".\Objects\screen" - 0 Error(s), 3 Warning(s).
-Build Time Elapsed:  00:00:00
+".\Objects\screen" - 0 Error(s), 8 Warning(s).
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

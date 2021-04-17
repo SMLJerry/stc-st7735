@@ -16,7 +16,7 @@ void main() {
 	P3M1 &= ~(1<<2),
 	P3M0 |=  (1<<2);        //P3.2 set as push-pull output mode
 	#endif
-	LCD_init();
+	LCD_Init();
 	bl=1;
 	while(1) {
 		displaySingleColour(RED);//红色
