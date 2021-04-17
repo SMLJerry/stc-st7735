@@ -20,7 +20,9 @@ void main() {
 	bl=1;
 	while(1) {
 		displaySingleColour(RED);//红色
+		delay_ms(500);
 		displaySingleColour(GREEN);//绿色        
+		delay_ms(500);
 		displaySingleColour(BLUE);//蓝色
 		delay_ms(500);        
 		displaySingleColour(WHITE);//白色
