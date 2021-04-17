@@ -15,3 +15,5 @@
 
 unsigned short RGB888ToRGB565(unsigned int n888Color);
 unsigned int RGB565ToRGB888(unsigned short n565Color);
+unsigned int RGBToRGB888(unsigned int r, unsigned int g, unsigned int b);
+unsigned short RGBToRGB565(unsigned int r, unsigned int g, unsigned int b);

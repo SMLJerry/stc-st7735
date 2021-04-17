@@ -16,3 +16,11 @@ unsigned int RGB565ToRGB888(unsigned short n565Color)
  
 	return (int)(cRed << 16) + (cGreen << 8) + (cBlue << 0);
 }
+
+unsigned int RGBToRGB888(unsigned int r, unsigned int g, unsigned int b) {
+	return ((0xFF << 24)|(r << 16)|(g << 8)|b);
+}
+
+unsigned short RGBToRGB565(unsigned int r, unsigned int g, unsigned int b) {
+	return RGB888ToRGB565(RGBToRGB888(r, g, b));
+}

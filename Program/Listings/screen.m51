@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/17/2021  10:04:05  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/17/2021  10:19:09  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -25,15 +25,18 @@ LINK MAP OF MODULE:  .\Objects\screen (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            IDATA   0008H     0001H     UNIT         ?STACK
+            DATA    0008H     0002H     UNIT         ?DT?_RGBTORGB888?RGBCONVERT
+            IDATA   000AH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     004BH     UNIT         ?PR?_RGB565TORGB888?RGBCONVERT
             CODE    004EH     0041H     UNIT         ?PR?_RGB888TORGB565?RGBCONVERT
-            CODE    008FH     0014H     UNIT         ?C?LIB_CODE
-            CODE    00A3H     000CH     UNIT         ?C_C51STARTUP
-            CODE    00AFH     0001H     UNIT         ?PR?MAIN?MAIN
+            CODE    008FH     0021H     UNIT         ?PR?_RGBTORGB888?RGBCONVERT
+            CODE    00B0H     0014H     UNIT         ?C?LIB_CODE
+            CODE    00C4H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00D0H     0006H     UNIT         ?PR?_RGBTORGB565?RGBCONVERT
+            CODE    00D6H     0001H     UNIT         ?PR?MAIN?MAIN
 
 
 
@@ -54,20 +57,20 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:00A3H         SEGMENT       ?C_C51STARTUP
-  I:0008H         SEGMENT       ?STACK
+  C:00C4H         SEGMENT       ?C_C51STARTUP
+  I:000AH         SEGMENT       ?STACK
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:19:09  PAGE 2
+
+
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:04:05  PAGE 2
-
-
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:00A6H         SYMBOL        IDATALOOP
+  C:00C7H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -76,18 +79,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:00A3H         SYMBOL        STARTUP1
+  C:00C4H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:00A3H         LINE#         133
-  C:00A5H         LINE#         134
-  C:00A6H         LINE#         135
-  C:00A7H         LINE#         136
-  C:00A9H         LINE#         185
-  C:00ACH         LINE#         196
+  C:00C4H         LINE#         133
+  C:00C6H         LINE#         134
+  C:00C7H         LINE#         135
+  C:00C8H         LINE#         136
+  C:00CAH         LINE#         185
+  C:00CDH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
@@ -101,14 +104,14 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
   D:00D8H         PUBLIC        CCON
-  C:00AFH         PUBLIC        main
+  C:00D6H         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00E0H         PUBLIC        ACC
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:00AFH         LINE#         13
-  C:00AFH         LINE#         14
+  C:00D6H         LINE#         13
+  C:00D6H         LINE#         14
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -116,12 +119,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:19:09  PAGE 3
+
+
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00C0H         PUBLIC        P4
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:04:05  PAGE 3
-
-
   D:00C8H         PUBLIC        P5
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
@@ -134,6 +137,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
 
   -------         MODULE        RGBCONVERT
   C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00D0H         PUBLIC        _RGBToRGB565
+  C:008FH         PUBLIC        _RGBToRGB888
   C:0003H         PUBLIC        _RGB565ToRGB888
   C:004EH         PUBLIC        _RGB888ToRGB565
   -------         PROC          _RGB888TORGB565
@@ -166,20 +171,35 @@ SYMBOL TABLE OF MODULE:  .\Objects\screen (?C_STARTUP)
   C:002BH         LINE#         17
   C:004DH         LINE#         18
   -------         ENDPROC       _RGB565TORGB888
+  -------         PROC          _RGBTORGB888
+  D:0008H         SYMBOL        r
+  D:0004H         SYMBOL        g
+  D:0002H         SYMBOL        b
+  C:008FH         LINE#         20
+  C:0093H         LINE#         21
+  C:00AFH         LINE#         22
+  -------         ENDPROC       _RGBTORGB888
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:19:09  PAGE 4
+
+
+  -------         PROC          _RGBTORGB565
+  D:0006H         SYMBOL        r
+  D:0004H         SYMBOL        g
+  D:0002H         SYMBOL        b
+  C:00D0H         LINE#         24
+  C:00D0H         LINE#         25
+  -------         ENDPROC       _RGBTORGB565
   -------         ENDMOD        RGBCONVERT
 
   -------         MODULE        ?C?SLSHR
-  C:008FH         PUBLIC        ?C?SLSHR
+  C:00B0H         PUBLIC        ?C?SLSHR
   -------         ENDMOD        ?C?SLSHR
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_RGB888TORGB565?RGBCONVERT
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_RGB565TORGB888?RGBCONVERT
 
-Program Size: data=9.0 xdata=0 code=176
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2021  10:04:05  PAGE 4
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RGBTORGB565?RGBCONVERT
 
-
+Program Size: data=11.0 xdata=0 code=215
 LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
