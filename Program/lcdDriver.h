@@ -34,7 +34,7 @@ void LCD_WriteIndex(unsigned char Data); // 向屏幕写入一个8位指令
 void LCD_WriteData(unsigned char Data); // 向屏幕写入一个8位数据
 void LCD_WriteData_16Bit(unsigned int Data); // 向屏幕写入一个16位数据
 void LCD_Reset(); // 重置屏幕
-void LCD_init(); // 初始化LCD, 必须调用
+void LCD_Init(); // 初始化LCD, 必须调用
 void LCD_SetRegion(unsigned int startX, unsigned int startY, unsigned int endX, unsigned int endY); // 设置显示区域，在此区域写数据自动换行
 void putPixel(unsigned int x, unsigned int y, unsigned int color); // 将一个像素设为指定颜色
 void displaySingleColour(int color); // 单色填充屏幕
