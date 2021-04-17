@@ -22,19 +22,11 @@ D:\stc-st7735\Program\screen.uvproj
 Project File Date:  04/17/2021
 
 <h2>Output:</h2>
-Rebuild target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
+Build target 'Target 1'
 compiling lcdDriver.c...
-compiling RGBConvert.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_RGB565TORGB888?RGBCONVERT
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_RGBTORGB565?RGBCONVERT
-Program Size: data=11.0 xdata=0 code=215
-".\Objects\screen" - 0 Error(s), 2 Warning(s).
-Build Time Elapsed:  00:00:01
+lcdDriver.c(3107): error C249: 'CONSTANT': SEGMENT TOO LARGE
+Target not created.
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
