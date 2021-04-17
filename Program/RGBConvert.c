@@ -1,0 +1,18 @@
+#include "RGBConvert.h"
+
+unsigned short RGB888ToRGB565(unsigned int n888Color)
+{
+	unsigned char cRed   = (n888Color & RGB888_RED)   >> 19;
+	unsigned char cGreen = (n888Color & RGB888_GREEN) >> 10;
+	unsigned char cBlue  = (n888Color & RGB888_BLUE)  >> 3;
+	return (short)(cRed << 11) + (cGreen << 5) + (cBlue << 0);
+}
+ 
+unsigned int RGB565ToRGB888(unsigned short n565Color)
+{
+	unsigned char cRed   = (n565Color & RGB565_RED)    >> 8;
+	unsigned char cGreen = (n565Color & RGB565_GREEN)  >> 3;
+	unsigned char cBlue  = (n565Color & RGB565_BLUE)   << 3;
+ 
+	return (int)(cRed << 16) + (cGreen << 8) + (cBlue << 0);
+}

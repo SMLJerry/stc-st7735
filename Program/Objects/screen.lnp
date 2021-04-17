@@ -1,0 +1,6 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\lcdDriver.obj",
+".\Objects\RGBConvert.obj" 
+TO ".\Objects\screen" 
+PRINT(".\Listings\screen.m51")

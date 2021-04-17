@@ -1,0 +1,26 @@
+C51 COMPILER V9.60.0.0   LCDDRIVER                                                         04/17/2021 10:04:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCDDRIVER
+OBJECT MODULE PLACED IN .\Objects\lcdDriver.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE lcdDriver.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lc
+                    -dDriver.lst) OBJECT(.\Objects\lcdDriver.obj)
+
+line level    source
+
+   1          #include "lcdDriver.h"
+   2          #include "RGBConvert.h"
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
