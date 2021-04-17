@@ -38,6 +38,6 @@ void LCD_init(); // 初始化LCD, 必须调用
 void LCD_SetRegion(unsigned int startX, unsigned int startY, unsigned int endX, unsigned int endY); // 设置显示区域，在此区域写数据自动换行
 void putPixel(unsigned int x, unsigned int y, unsigned int color); // 将一个像素设为指定颜色
 void displaySingleColour(int color); // 单色填充屏幕
-unsigned char code Zk_ASCII8X16[];
-unsigned char code picture1[];
+unsigned char code Zk_ASCII8x16[];
+const unsigned char code picture1[];
 unsigned char code picture2[];

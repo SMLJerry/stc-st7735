@@ -5,16 +5,16 @@
 <h2>Tool Versions:</h2>
 IDE-Version: ¦ÌVision V5.27.1.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: MingLang Shang, Freestyle studio, LIC=----
+License Information: MingLang Shang, Freestyle studio, LIC=VG6FW-QHIEX-3A9DP-MZRP9-8SH4N-85YAI
  
 Tool Versions:
 Toolchain:       PK51 Prof. Developers Kit  Version: 9.60.0.0
 Toolchain Path:  C:\Keil\C51\BIN
 C Compiler:      C51.exe V9.60.0.0
-Assembler:       A51.exe V8.2.7.0
-Linker/Locator:  BL51.exe V6.22.2.0
-Library Manager: LIB51.exe V4.30.1.0
-Hex Converter:   OH51.exe V2.7.0.0
+Assembler:       AX51.exe V3.15.3.0
+Linker/Locator:  LX51.exe V4.66.97.0
+Library Manager: LIBX51.exe V4.30.1.0
+Hex Converter:   OHX51.exe V1.47.0.0
 CPU DLL:         S8051.DLL V3.122.0.0
 Dialog DLL:      DP51.DLL V2.67.0.0 
 <h2>Project:</h2>
@@ -22,11 +22,22 @@ D:\stc-st7735\Program\screen.uvproj
 Project File Date:  04/17/2021
 
 <h2>Output:</h2>
-Build target 'Target 1'
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
 compiling lcdDriver.c...
-lcdDriver.c(3107): error C249: 'CONSTANT': SEGMENT TOO LARGE
-Target not created.
-Build Time Elapsed:  00:00:00
+compiling RGBConvert.c...
+linking...
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _DISPLAY_ASCII8X16/LCDDRIVER
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _RGB565TORGB888/RGBCONVERT
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    _RGBTORGB565/RGBCONVERT
+Program Size: data=9.0 xdata=68 const=45057 code=1778
+creating hex file from ".\Objects\screen"...
+".\Objects\screen" - 0 Error(s), 3 Warning(s).
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
