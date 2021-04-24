@@ -32,7 +32,13 @@ sbit	bl=P0^2;	// 屏幕的背光口, BL或者LED-
 char *reverse(char *s);
 char *itoa(int n);
 void output_Pixel(unsigned int x,unsigned int y); // 输出一个像素
+void GUI_DrawFont16(int num, unsigned int x, unsigned int y, unsigned int fgColor,
+	unsigned int bgColor, unsigned int mode);
+void LCD_ShowChar(int x, int y, int fgColor, int bgColor, char num, int mode);
+void LCD_ShowString(int x, int y, char* p, int mode, int fgColor, int bgColor);
 void display_ASCII8x16(unsigned int x0,unsigned int y0,unsigned char *s); // 在指定坐标显示ASCII字符
+void LCD_DrawPoint(unsigned int x,unsigned int y, unsigned int color);
+void LCD_ShowUTF_8String(int x, int y, int mode, int fgColor, int bgColor) ;
 void delay_ms(unsigned int time); // 延迟x毫秒
 void SPI_WriteData(unsigned char Data); // 向SPI总线传输一个8位数据
 void LCD_WriteIndex(unsigned char Data); // 向屏幕写入一个8位指令

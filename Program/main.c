@@ -6,7 +6,7 @@
 
 #include "lcdDriver.h"
 #include "RGBConvert.h"
-
+#include "gui.h"
 #define MCU_STC12
 char t[];
 void int0();
@@ -34,7 +34,15 @@ typedef unsigned int uint;
 //		t=itoa(i);
 		display_ASCII8x16(35,80,itoa(i));
 	}*/
-	LCD_ShowPicture(0,0,100,100);
+	//LCD_ShowPicture(0,0,100,100);
+		//display_ASCII8x16(35, 80, "v1.0");
+		drawButton(20, 20, 70, 40, WHITE, 2, RGBToRGB565(255, 176, 0), "Hello!", RED);
+		drawButton(10, 100, 70, 40, WHITE, 1, PURPLE, "button2", YELLOW);
+		
+		 LCD_ShowUTF_8String(40, 30, 0, BLACK, WHITE) ;
 	while(1) {
+		//LCD_DrawRectangle(50, 50, 100, 75,BLACK);
+		
+		//display_ASCII8x16(51, 54,"button");
     }
 }

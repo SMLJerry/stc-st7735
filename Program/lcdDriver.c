@@ -3,6 +3,8 @@
 #include <string.h>
 #include "LCDDriver.h"
 #include "RGBConvert.h"
+#include "word.h"
+
 char *reverse(char *s){
     char temp;
     char *p = s;    //p指向s的头部
@@ -70,6 +72,103 @@ void display_ASCII8x16(unsigned int x0,unsigned int y0,unsigned char *s) { // �
 			}
 		}
 	}   
+}
+void LCD_ShowString(int x, int y, char* p, int mode, int fgColor, int bgColor) {
+	while((*p<='~')&&(*p>=' '))//判断是不是非法字符!
+    {   
+        LCD_ShowChar(x,y,fgColor,bgColor,*p,mode);
+        x+=8;
+        p++;
+    }
+}
+void LCD_ShowChar(int x, int y, int fgColor, int bgColor, char num, int mode) {
+	  int temp;
+    int pos,t;
+	//int colortemp=POINT_COLOR;      
+		   
+	num=num-' ';//得到偏移后的值
+	LCD_SetRegion(x,y,x+16/2-1,y+8-1);//设置单个文字显示窗口
+	if(!mode) //非叠加方式
+	{
+		
+		for(pos=0;pos<16;pos++)
+		{
+			//if(size==12)
+			temp=ASCII_8x16[num][pos];//调用1206字体
+			//else temp=asc2_1608[num][pos];		 //调用1608字体
+			for(t=0;t<16/2;t++)
+		    {                 
+		        if(temp&0x01)LCD_WriteData_16Bit(fgColor); 
+					else LCD_WriteData_16Bit(bgColor); 
+				temp>>=1; 
+				
+		    }
+			
+		}	
+	}else//叠加方式
+	{
+		for(pos=0;pos<16;pos++)
+		{
+			//if(size==12)
+			temp=ASCII_8x16[num][pos];//调用1206字体
+			//else temp=asc2_1608[num][pos];		 //调用1608字体
+			for(t=0;t<16/2;t++)
+		    {   
+					if(temp&0x01)LCD_DrawPoint(x+t,y+pos,fgColor);//画一个点    
+		        temp>>=1; 
+		    }
+		}
+	}
+}
+void GUI_DrawFont16(int num, unsigned int x, unsigned int y, unsigned int fgColor,
+	unsigned int bgColor, unsigned int mode)
+{
+	int temp;
+    int pos,t;
+	//int colortemp=POINT_COLOR;      
+		  
+	
+	LCD_SetRegion(x,y,x+16-1,y+16-1);//设置单个文字显示窗口
+	
+		if(!mode) //非叠加方式
+	{
+		
+		for(pos=0;pos<16;pos++)
+		{
+			//if(size==12)
+			temp=Chinese_16x16[num][pos];//调用1206字体
+			//else temp=asc2_1608[num][pos];		 //调用1608字体
+			for(t=0;t<16;t++)
+		    {                 
+		        if(temp&0x01)LCD_WriteData_16Bit(fgColor); 
+					else LCD_WriteData_16Bit(bgColor); 
+				temp>>=1; 
+				
+		    }
+			
+		}	
+	}else//叠加方式
+	{
+		for(pos=0;pos<32;pos++)
+		{
+			//if(size==12)
+			temp=Chinese_16x16[num][pos];//调用1206字体
+			//else temp=asc2_1608[num][pos];		 //调用1608字体
+			for(t=0;t<16;t++)
+		    {   
+					if(temp&0x01)LCD_DrawPoint(x+t,y+pos,fgColor);//画一个点    
+		        temp>>=1; 
+		    }
+		}
+}
+}
+void LCD_ShowUTF_8String(int x, int y, int mode, int fgColor, int bgColor) {
+	int i;
+	for (i=0;i<6;i++)
+    {   
+        GUI_DrawFont16(i, x,y,fgColor,bgColor,mode);
+        x+=16;
+    }
 }
 void delay_ms(unsigned int time) { // 延迟x毫秒
 	unsigned int i,j;

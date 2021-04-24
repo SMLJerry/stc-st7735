@@ -406,6 +406,26 @@
               <FileType>1</FileType>
               <FilePath>.\RGBConvert.c</FilePath>
             </File>
+            <File>
+              <FileName>gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\gui.h</FilePath>
+            </File>
+            <File>
+              <FileName>word.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\word.h</FilePath>
+            </File>
+            <File>
+              <FileName>word.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\word.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
