@@ -1,10 +1,10 @@
-C51 COMPILER V9.59.0.0   MAIN                                                              04/24/2021 21:30:39 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 1   
 
 
-C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN .\Objects\main.obj
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c LARGE OMF2 OPTIMIZE(9,SPEED) BROWSE MODP2 DEBUG PRINT(.\Listings\mai
-                    -n.lst) TABS(2) OBJECT(.\Objects\main.obj)
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c LARGE OMF2 OPTIMIZE(9,SPEED) BROWSE VARBANKING(1) DEBUG CODE PRINT(.
+                    -\Listings\main.lst) OBJECT(.\Objects\main.obj)
 
 line level    source
 
@@ -22,48 +22,424 @@ line level    source
   12          void int0();
   13          void i1();
   14          
-  15          char i=0;   
+  15          char i,j;               
   16          
-  17          typedef unsigned char uchar;
-  18          typedef unsigned int uint;
-  19            
-  20            void main() {
-  21   1        #ifdef MCU_STC12
-  22   1        P3M1 &= ~(1<<2),
-  23   1        P3M0 |=  (1<<2);        //P3.2 set as push-pull output mode
-  24   1        #endif
-  25   1        LCD_Init();
-  26   1        bl=~bl; 
-  27   1          displaySingleColour(WHITE);
-  28   1      //  LCD_DrawLine(1, 1, 100, 100, PURPLE);
-  29   1      //  LCD_DrawLine(1, 100, 100, 1, BLACK);
-  30   1          /*
-  31   1        for (i=0;i<=10;i++) {
-  32   1          LCD_Fill(14,30,14+i,40,BLACK);
-  33   1          LCD_Fill(35,80,35+8,80+16,WHITE);
-  34   1      //    t=itoa(i);
-  35   1          display_ASCII8x16(35,80,itoa(i));
-  36   1        }*/
-  37   1        //LCD_ShowPicture(0,0,100,100);
-  38   1          //display_ASCII8x16(35, 80, "v1.0");
-  39   1          drawButton(20, 20, 70, 40, WHITE, 2, RGBToRGB565(255, 176, 0), "Hello!", RED);
-  40   1          drawButton(10, 100, 70, 40, WHITE, 1, PURPLE, "button2", YELLOW);
-  41   1          
-  42   1           LCD_ShowUTF_8String(40, 30, 0, BLACK, WHITE) ;
-  43   1        while(1) {
-  44   2          //LCD_DrawRectangle(50, 50, 100, 75,BLACK);
-  45   2          
-  46   2          //display_ASCII8x16(51, 54,"button");
-  47   2          }
-  48   1      }
+  17          sbit led1=P4^0;
+  18          int ison = 0;
+  19          typedef unsigned char uchar;
+  20          typedef unsigned int uint;
+  21                  
+  22                  void main() {
+  23   1              #ifdef MCU_STC12
+  24   1              P3M1 &= ~(1<<2),
+  25   1              P3M0 |=  (1<<2);        //P3.2 set as push-pull output mode
+  26   1              #endif
+  27   1              LCD_Init();
+  28   1              bl=~bl; 
+  29   1              displaySingleColour(WHITE);     
+  30   1                      delay_ms(700);
+  31   1              //void drawProgressBar(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned 
+             -int bgColor,
+  32   1              //unsigned int borderWidth, unsigned int borderColor, unsigned int value, unsigned int fgColor);
+  33   1              drawProgressBar(34, 10, 100, 20, WHITE, 1, YELLOW, 0, RGB888ToRGB565(56, 255, 0), 1);
+  34   1              delay_ms(3000);
+  35   1              LCD_ShowString(0, 32, 16, "Model: STC12LE5A60S2", 1, BLACK, WHITE);
+  36   1              drawProgressBar(34, 10, 100, 20, WHITE, 1, YELLOW, 5, RGB888ToRGB565(56, 255, 0), 1);
+  37   1              LCD_ShowString(10, 50, 16, "Width: 168px", 1, BLACK, WHITE);
+  38   1              LCD_ShowString(10, 70, 16, "Height: 120px", 1, BLACK, WHITE);
+  39   1              delay_ms(3400);
+  40   1              drawProgressBar(34, 10, 100, 20, WHITE, 1, YELLOW, 100, RGB888ToRGB565(56, 255, 0), 1);
+  41   1              LCD_ShowString(10, 90, 16, "Loaded!", 1, RED, WHITE);
+  42   1              delay_ms(7000);
+  43   1              displaySingleColour(WHITE);     
+  44   1              LCD_ShowPicture(34, 10, 100, 100);
+  45   1              //delay_ms(7000);
+  46   1              for (i = 0; i < 255; i ++) {
+  47   2                      LCD_Fill(0, 0, 20, 20, RGB888ToRGB565(i,0,0));
+  48   2                      LCD_Fill(0, 20, 20, 40, RGB888ToRGB565(0,i,0));
+  49   2                      LCD_Fill(0, 40, 20, 60, RGB888ToRGB565(0,0,i));
+  50   2              }
+  51   1              while(1) {
+  52   2                      
+  53   2          }
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 2   
+
+  54   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION Com0008 (BEGIN)
+0000         L?0009:
+0000 A3                INC     DPTR
+0001         L?0010:
+0001 F0                MOVX    @DPTR,A
+0002 A3                INC     DPTR
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 04                INC     A
+0007 F0                MOVX    @DPTR,A
+0008 E4                CLR     A
+0009 A3                INC     DPTR
+000A F0                MOVX    @DPTR,A
+000B A3                INC     DPTR
+000C         L?0011:
+000C F0                MOVX    @DPTR,A
+000D 74FF              MOV     A,#0FFH
+000F A3                INC     DPTR
+0010 F0                MOVX    @DPTR,A
+0011 A3                INC     DPTR
+0012 F0                MOVX    @DPTR,A
+0013 7B10              MOV     R3,#010H
+0015 7A00              MOV     R2,#00H
+0017 22                RET     
+0018         L?0012:
+0018 A3                INC     DPTR
+0019 F0                MOVX    @DPTR,A
+001A 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+012H
+001D E4                CLR     A
+001E         L?0013:
+001E F0                MOVX    @DPTR,A
+001F A3                INC     DPTR
+0020 04                INC     A
+0021 F0                MOVX    @DPTR,A
+0022 7B64              MOV     R3,#064H
+0024         L?0014:
+0024 7A00              MOV     R2,#00H
+0026 7D0A              MOV     R5,#0AH
+0028 7C00              MOV     R4,#00H
+002A 7F22              MOV     R7,#022H
+002C 7E00              MOV     R6,#00H
+002E 22                RET     
+002F         L?0019:
+002F         L?0020:
+002F A3                INC     DPTR
+0030 7407              MOV     A,#07H
+0032 F0                MOVX    @DPTR,A
+0033 A3                INC     DPTR
+0034 74FF              MOV     A,#0FFH
+0036 F0                MOVX    @DPTR,A
+0037 22                RET     
+             ; FUNCTION Com0008 (END)
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 22
+                                           ; SOURCE LINE # 24
+0000 53B1FB            ANL     P3M1,#0FBH
+0003 43B204            ORL     P3M0,#04H
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 4   
+
+                                           ; SOURCE LINE # 27
+0006 120000      E     LCALL   LCD_Init
+                                           ; SOURCE LINE # 28
+0009 B282              CPL     bl
+                                           ; SOURCE LINE # 29
+000B 74FF              MOV     A,#0FFH
+000D FF                MOV     R7,A
+000E FE                MOV     R6,A
+000F 120000      E     LCALL   _displaySingleColour
+                                           ; SOURCE LINE # 30
+0012 7FBC              MOV     R7,#0BCH
+0014 7E02              MOV     R6,#02H
+                                           ; SOURCE LINE # 33
+0016 120000      R     LCALL   L?0007
+0019 120000      R     LCALL   L?0019
+001C E4                CLR     A
+001D A3                INC     DPTR
+001E F0                MOVX    @DPTR,A
+001F A3                INC     DPTR
+0020 F0                MOVX    @DPTR,A
+0021 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+012H
+0024 120000      R     LCALL   L?0013
+0027 120000      E     LCALL   _drawProgressBar
+                                           ; SOURCE LINE # 34
+002A 7FB8              MOV     R7,#0B8H
+002C 7E0B              MOV     R6,#0BH
+002E 120000      E     LCALL   _delay_ms
+                                           ; SOURCE LINE # 35
+0031 900000      E     MOV     DPTR,#?_LCD_ShowString?BYTE+06H
+0034 74FF              MOV     A,#0FFH
+0036 F0                MOVX    @DPTR,A
+0037 A3                INC     DPTR
+0038 7400        R     MOV     A,#HIGH ?SC_0
+003A F0                MOVX    @DPTR,A
+003B 7400        R     MOV     A,#LOW ?SC_0
+003D 120000      R     LCALL   L?0009
+0040 7D20              MOV     R5,#020H
+0042 7C00              MOV     R4,#00H
+0044 E4                CLR     A
+0045 FF                MOV     R7,A
+0046 FE                MOV     R6,A
+0047 120000      E     LCALL   _LCD_ShowString
+                                           ; SOURCE LINE # 36
+004A E4                CLR     A
+004B FB                MOV     R3,A
+004C 7DFF              MOV     R5,#0FFH
+004E 7F38              MOV     R7,#038H
+0050 120000      E     LCALL   _RGB888ToRGB565
+0053 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+010H
+0056 EE                MOV     A,R6
+0057 F0                MOVX    @DPTR,A
+0058 A3                INC     DPTR
+0059 EF                MOV     A,R7
+005A F0                MOVX    @DPTR,A
+005B 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+06H
+005E E4                CLR     A
+005F F0                MOVX    @DPTR,A
+0060 A3                INC     DPTR
+0061 7414              MOV     A,#014H
+0063 F0                MOVX    @DPTR,A
+0064 74FF              MOV     A,#0FFH
+0066 A3                INC     DPTR
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 5   
+
+0067 F0                MOVX    @DPTR,A
+0068 A3                INC     DPTR
+0069 F0                MOVX    @DPTR,A
+006A A3                INC     DPTR
+006B E4                CLR     A
+006C F0                MOVX    @DPTR,A
+006D A3                INC     DPTR
+006E 04                INC     A
+006F F0                MOVX    @DPTR,A
+0070 120000      R     LCALL   L?0019
+0073 A3                INC     DPTR
+0074 E4                CLR     A
+0075 F0                MOVX    @DPTR,A
+0076 7405              MOV     A,#05H
+0078 120000      R     LCALL   L?0012
+                                           ; SOURCE LINE # 37
+007B 120000      R     LCALL   L?0017
+007E 7400        R     MOV     A,#HIGH ?SC_21
+0080 F0                MOVX    @DPTR,A
+0081 7400        R     MOV     A,#LOW ?SC_21
+0083 120000      R     LCALL   L?0009
+0086 7D32              MOV     R5,#032H
+0088 120000      R     LCALL   L?0018
+                                           ; SOURCE LINE # 38
+008B 900000      E     MOV     DPTR,#?_LCD_ShowString?BYTE+06H
+008E 74FF              MOV     A,#0FFH
+0090 F0                MOVX    @DPTR,A
+0091 A3                INC     DPTR
+0092 7400        R     MOV     A,#HIGH ?SC_34
+0094 F0                MOVX    @DPTR,A
+0095 A3                INC     DPTR
+0096 7400        R     MOV     A,#LOW ?SC_34
+0098 120000      R     LCALL   L?0010
+009B 7D46              MOV     R5,#046H
+009D 120000      R     LCALL   L?0018
+                                           ; SOURCE LINE # 39
+00A0 7F48              MOV     R7,#048H
+00A2 7E0D              MOV     R6,#0DH
+                                           ; SOURCE LINE # 40
+00A4 120000      R     LCALL   L?0007
+00A7 120000      R     LCALL   L?0020
+00AA A3                INC     DPTR
+00AB E4                CLR     A
+00AC F0                MOVX    @DPTR,A
+00AD 7464              MOV     A,#064H
+00AF 120000      R     LCALL   L?0012
+                                           ; SOURCE LINE # 41
+00B2 120000      R     LCALL   L?0017
+00B5 7400        R     MOV     A,#HIGH ?SC_48
+00B7 F0                MOVX    @DPTR,A
+00B8 A3                INC     DPTR
+00B9 7400        R     MOV     A,#LOW ?SC_48
+00BB F0                MOVX    @DPTR,A
+00BC A3                INC     DPTR
+00BD E4                CLR     A
+00BE F0                MOVX    @DPTR,A
+00BF A3                INC     DPTR
+00C0 04                INC     A
+00C1 F0                MOVX    @DPTR,A
+00C2 A3                INC     DPTR
+00C3 E4                CLR     A
+00C4 F0                MOVX    @DPTR,A
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 6   
+
+00C5 A3                INC     DPTR
+00C6 741F              MOV     A,#01FH
+00C8 120000      R     LCALL   L?0011
+00CB 7D5A              MOV     R5,#05AH
+00CD 7C00              MOV     R4,#00H
+00CF 7F0A              MOV     R7,#0AH
+00D1 7E00              MOV     R6,#00H
+00D3 120000      E     LCALL   _LCD_ShowString
+                                           ; SOURCE LINE # 42
+00D6 7F58              MOV     R7,#058H
+00D8 7E1B              MOV     R6,#01BH
+00DA 120000      E     LCALL   _delay_ms
+                                           ; SOURCE LINE # 43
+00DD 74FF              MOV     A,#0FFH
+00DF FF                MOV     R7,A
+00E0 FE                MOV     R6,A
+00E1 120000      E     LCALL   _displaySingleColour
+                                           ; SOURCE LINE # 44
+00E4 900000      E     MOV     DPTR,#?_LCD_ShowPicture?BYTE+06H
+00E7 E4                CLR     A
+00E8 F0                MOVX    @DPTR,A
+00E9 A3                INC     DPTR
+00EA 7464              MOV     A,#064H
+00EC F0                MOVX    @DPTR,A
+00ED FB                MOV     R3,A
+00EE 120000      R     LCALL   L?0014
+00F1 120000      E     LCALL   _LCD_ShowPicture
+                                           ; SOURCE LINE # 46
+00F4 E4                CLR     A
+00F5 900000      R     MOV     DPTR,#i
+00F8 F0                MOVX    @DPTR,A
+00F9         ?C0001:
+00F9 900000      R     MOV     DPTR,#i
+00FC E0                MOVX    A,@DPTR
+00FD FF                MOV     R7,A
+00FE FD                MOV     R5,A
+00FF 33                RLC     A
+0100 95E0              SUBB    A,ACC
+0102 FC                MOV     R4,A
+0103 C3                CLR     C
+0104 ED                MOV     A,R5
+0105 94FF              SUBB    A,#0FFH
+0107 EC                MOV     A,R4
+0108 6480              XRL     A,#080H
+010A 9480              SUBB    A,#080H
+010C 5046              JNC     ?C0004
+                                           ; SOURCE LINE # 47
+010E E4                CLR     A
+010F FB                MOV     R3,A
+0110 FD                MOV     R5,A
+0111 120000      E     LCALL   _RGB888ToRGB565
+0114 900000      E     MOV     DPTR,#?_LCD_Fill?BYTE+08H
+0117 EE                MOV     A,R6
+0118 F0                MOVX    @DPTR,A
+0119 A3                INC     DPTR
+011A EF                MOV     A,R7
+011B F0                MOVX    @DPTR,A
+011C 900000      E     MOV     DPTR,#?_LCD_Fill?BYTE+06H
+011F E4                CLR     A
+0120 F0                MOVX    @DPTR,A
+0121 A3                INC     DPTR
+0122 7414              MOV     A,#014H
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 7   
+
+0124 F0                MOVX    @DPTR,A
+0125 FB                MOV     R3,A
+0126 7A00              MOV     R2,#00H
+0128 E4                CLR     A
+0129 FD                MOV     R5,A
+012A FC                MOV     R4,A
+012B FF                MOV     R7,A
+012C FE                MOV     R6,A
+012D 120000      E     LCALL   _LCD_Fill
+                                           ; SOURCE LINE # 48
+0130 900000      R     MOV     DPTR,#i
+0133 E0                MOVX    A,@DPTR
+0134 FD                MOV     R5,A
+0135 E4                CLR     A
+0136 FB                MOV     R3,A
+0137 120000      R     LCALL   L?0015
+013A 7428              MOV     A,#028H
+013C F0                MOVX    @DPTR,A
+013D 7D14              MOV     R5,#014H
+                                           ; SOURCE LINE # 49
+013F 120000      R     LCALL   L?0016
+0142 FB                MOV     R3,A
+0143 E4                CLR     A
+0144 FD                MOV     R5,A
+0145 120000      R     LCALL   L?0015
+0148 743C              MOV     A,#03CH
+014A F0                MOVX    @DPTR,A
+014B 7D28              MOV     R5,#028H
+                                           ; SOURCE LINE # 50
+014D 120000      R     LCALL   L?0016
+0150 04                INC     A
+0151 F0                MOVX    @DPTR,A
+0152 80A5              SJMP    ?C0001
+0154         ?C0004:
+                                           ; SOURCE LINE # 51
+                                           ; SOURCE LINE # 53
+0154 80FE              SJMP    ?C0004
+                                           ; SOURCE LINE # 54
+0156         L?0007:
+0156 120000      E     LCALL   _delay_ms
+0159 E4                CLR     A
+015A FB                MOV     R3,A
+015B 7DFF              MOV     R5,#0FFH
+015D 7F38              MOV     R7,#038H
+015F 120000      E     LCALL   _RGB888ToRGB565
+0162 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+010H
+0165 EE                MOV     A,R6
+0166 F0                MOVX    @DPTR,A
+0167 A3                INC     DPTR
+0168 EF                MOV     A,R7
+0169 F0                MOVX    @DPTR,A
+016A 900000      E     MOV     DPTR,#?_drawProgressBar?BYTE+06H
+016D E4                CLR     A
+016E F0                MOVX    @DPTR,A
+016F A3                INC     DPTR
+0170 7414              MOV     A,#014H
+0172 F0                MOVX    @DPTR,A
+0173 74FF              MOV     A,#0FFH
+0175 A3                INC     DPTR
+0176 F0                MOVX    @DPTR,A
+0177 A3                INC     DPTR
+0178 F0                MOVX    @DPTR,A
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 8   
+
+0179 A3                INC     DPTR
+017A E4                CLR     A
+017B F0                MOVX    @DPTR,A
+017C A3                INC     DPTR
+017D 04                INC     A
+017E F0                MOVX    @DPTR,A
+017F 22                RET     
+0180         L?0015:
+0180 FF                MOV     R7,A
+0181 120000      E     LCALL   _RGB888ToRGB565
+0184 900000      E     MOV     DPTR,#?_LCD_Fill?BYTE+08H
+0187 EE                MOV     A,R6
+0188 F0                MOVX    @DPTR,A
+0189 A3                INC     DPTR
+018A EF                MOV     A,R7
+018B F0                MOVX    @DPTR,A
+018C 900000      E     MOV     DPTR,#?_LCD_Fill?BYTE+06H
+018F E4                CLR     A
+0190 F0                MOVX    @DPTR,A
+0191 A3                INC     DPTR
+0192 22                RET     
+0193         L?0016:
+0193 7B14              MOV     R3,#014H
+0195 7A00              MOV     R2,#00H
+0197 7C00              MOV     R4,#00H
+0199 E4                CLR     A
+019A FF                MOV     R7,A
+019B FE                MOV     R6,A
+019C 120000      E     LCALL   _LCD_Fill
+019F 900000      R     MOV     DPTR,#i
+01A2 E0                MOVX    A,@DPTR
+01A3 22                RET     
+01A4         L?0017:
+01A4 120000      E     LCALL   _drawProgressBar
+01A7 900000      E     MOV     DPTR,#?_LCD_ShowString?BYTE+06H
+01AA 74FF              MOV     A,#0FFH
+01AC F0                MOVX    @DPTR,A
+01AD A3                INC     DPTR
+01AE 22                RET     
+01AF         L?0018:
+01AF 7C00              MOV     R4,#00H
+01B1 7F0A              MOV     R7,#0AH
+01B3 7E00              MOV     R6,#00H
+01B5 120000      E     LCALL   _LCD_ShowString
+01B8 22                RET     
+             ; FUNCTION main (END)
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    172    ----
-   CONSTANT SIZE    =     15    ----
-   XDATA SIZE       =      1    ----
-C51 COMPILER V9.59.0.0   MAIN                                                              04/24/2021 21:30:39 PAGE 2   
-
+   CODE SIZE        =    497    ----
+   CONSTANT SIZE    =     56    ----
+   XDATA SIZE       =      4    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
@@ -73,6 +449,8 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
+
+C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 9   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

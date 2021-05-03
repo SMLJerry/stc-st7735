@@ -193,7 +193,7 @@
             <XDataHold>0</XDataHold>
             <UseOnchipRom>1</UseOnchipRom>
             <UseOnchipArithmetic>0</UseOnchipArithmetic>
-            <UseMultipleDPTR>1</UseMultipleDPTR>
+            <UseMultipleDPTR>0</UseMultipleDPTR>
             <UseOnchipXram>1</UseOnchipXram>
             <HadIRAM>1</HadIRAM>
             <HadXRAM>1</HadXRAM>
@@ -205,14 +205,14 @@
             <Mod517au>0</Mod517au>
             <Mode2>0</Mode2>
             <useCB>0</useCB>
-            <useXB>0</useXB>
+            <useXB>1</useXB>
             <useL251>1</useL251>
             <useA251>1</useA251>
             <Mx51>0</Mx51>
             <ModC812>0</ModC812>
             <ModCont>0</ModCont>
             <Lp51>0</Lp51>
-            <useXBS>0</useXBS>
+            <useXBS>1</useXBS>
             <ModDA>0</ModDA>
             <ModAB2>0</ModAB2>
             <Mx51P>0</Mx51P>
@@ -227,7 +227,7 @@
             <hadIROM2>0</hadIROM2>
             <hadIROM3>0</hadIROM3>
             <ModSmx2>0</ModSmx2>
-            <cBanks>0</cBanks>
+            <cBanks>5</cBanks>
             <xBanks>0</xBanks>
             <OnChipMemories>
               <RCB>

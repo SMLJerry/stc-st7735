@@ -56,7 +56,7 @@
         <AsmSymb>1</AsmSymb>
         <AsmXref>0</AsmXref>
         <CCond>1</CCond>
-        <CCode>0</CCode>
+        <CCode>1</CCode>
         <CListInc>0</CListInc>
         <CSymb>0</CSymb>
         <LinkerCodeListing>0</LinkerCodeListing>
@@ -123,7 +123,40 @@
           <Name>(98=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>5</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>word.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>20</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>F:\stc-st7735\Program\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+      </Breakpoint>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
