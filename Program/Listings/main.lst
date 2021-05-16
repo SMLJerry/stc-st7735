@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,10 +62,10 @@ line level    source
   51   1              while(1) {
   52   2                      
   53   2          }
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 2   
 
   54   1      }
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -129,7 +129,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 24
 0000 53B1FB            ANL     P3M1,#0FBH
 0003 43B204            ORL     P3M0,#04H
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 4   
 
                                            ; SOURCE LINE # 27
 0006 120000      E     LCALL   LCD_Init
@@ -193,7 +193,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0063 F0                MOVX    @DPTR,A
 0064 74FF              MOV     A,#0FFH
 0066 A3                INC     DPTR
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 5   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 5   
 
 0067 F0                MOVX    @DPTR,A
 0068 A3                INC     DPTR
@@ -257,7 +257,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C2 A3                INC     DPTR
 00C3 E4                CLR     A
 00C4 F0                MOVX    @DPTR,A
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 6   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 6   
 
 00C5 A3                INC     DPTR
 00C6 741F              MOV     A,#01FH
@@ -321,7 +321,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0120 F0                MOVX    @DPTR,A
 0121 A3                INC     DPTR
 0122 7414              MOV     A,#014H
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 7   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 7   
 
 0124 F0                MOVX    @DPTR,A
 0125 FB                MOV     R3,A
@@ -385,7 +385,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0176 F0                MOVX    @DPTR,A
 0177 A3                INC     DPTR
 0178 F0                MOVX    @DPTR,A
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 8   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 8   
 
 0179 A3                INC     DPTR
 017A E4                CLR     A
@@ -450,7 +450,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
 
-C51 COMPILER V9.60.0.0   MAIN                                                              05/03/2021 22:20:12 PAGE 9   
+C51 COMPILER V9.60.0.0   MAIN                                                              05/16/2021 19:39:11 PAGE 9   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
